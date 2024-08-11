@@ -2,7 +2,7 @@ import { useState, useCallback } from "react"
 
 
 function App() {
-const[lenghth, setlenghth] = useState(8)
+const[length, setlength] = useState(8)
 const [numberallowed, setnumberallowed]= useState(false)
 const[charAllowed, setcharAllowed] = useState(false)
 const[password, setpassword] = useState("")
@@ -37,6 +37,40 @@ setpassword(pass)
      className='outline-none w-full py-1 px-3 text-center max-w-md rounded-lg'
      placeholder='password'
      readOnly/>
+     <div className='flex text-sm gap-x-2'>
+      <div className='flex items-center gap-x-1'>
+        <input
+         type="range"
+         min={6}
+         max={100}
+         value={length}
+         className='cursor-pointer'
+         onChange={(e) => {setlength(e.target.value)}}
+         />
+         <label>Length:{length}</label>
+      </div>
+      <div className="flex items-center gap-x-1">
+        <input type="checkbox"
+        defaultChecked={numberallowed}
+        id="numberInput"
+        onChange={() => {
+          setnumberallowed((prev) => !prev);
+        }}
+       />
+       <label htmlFor="numberInput">Numbers</label>
+      </div>
+      <div className="flex items-center gap-x-1">
+        <input type="checkbox"
+        defaultChecked={charAllowed}
+        id="characterInput"
+        onChange={() => {
+          setcharAllowed((prev) => !prev) 
+        }} 
+        />
+        <label htmlFor="characterInput">Charcters</label>
+
+      </div>
+     </div>
     </div>
     
     </>
